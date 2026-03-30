@@ -1,19 +1,203 @@
-<script>
-  const BACKEND_URL = 'https://your-backend.onrender.com'; // ← CHANGE TO YOUR RENDER URL
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Starting Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: system-ui, sans-serif; }
+        .minecraft-font { font-family: 'Press Start 2P', system-ui; }
+    </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100">
 
-  async function loadDynamicSections() {
-    try {
-      const res = await fetch(`${BACKEND_URL}/api/sections`);
-      const sections = await res.json();
-      
-      // Example: populate a new "Dynamic Tips" section
-      console.log('Loaded from Firebase:', sections);
-      // You can now render them dynamically — let me know if you want the full updated HTML
-    } catch(e) {
-      console.error('Backend not reachable yet');
-    }
-  }
+    <!-- Navbar -->
+    <nav class="bg-neutral-900 border-b-4 border-emerald-500 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-4xl">⛏️</span>
+                <h1 class="text-3xl font-bold tracking-widest text-emerald-400 minecraft-font">MINECRAFT</h1>
+                <span class="text-xl">Starting Guide</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-lg">
+                <a href="#install" class="hover:text-emerald-400 transition-colors">Install</a>
+                <a href="#survival" class="hover:text-emerald-400 transition-colors">First Day</a>
+                <a href="#dynamic" class="hover:text-emerald-400 transition-colors">Dynamic Tips</a>
+                <a href="#feedback" class="hover:text-emerald-400 transition-colors">Feedback</a>
+            </div>
+            <a href="https://www.minecraft.net" target="_blank" 
+               class="bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+                <i class="fas fa-download"></i> Download
+            </a>
+        </div>
+    </nav>
 
-  // Load on page start
-  window.onload = loadDynamicSections;
-</script>
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-neutral-950 via-emerald-950 to-neutral-950 py-24">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-6xl md:text-7xl font-black leading-none mb-6">WELCOME TO THE BLOCKY WORLD!</h1>
+                <p class="text-2xl text-emerald-300 mb-8">Your complete beginner’s guide — now with live tips from Firebase!</p>
+            </div>
+            <div class="relative">
+                <img src="https://picsum.photos/id/1015/800/600" alt="Minecraft World" class="rounded-3xl shadow-2xl border-8 border-emerald-500">
+            </div>
+        </div>
+    </section>
+
+    <!-- Install Section (static) -->
+    <section id="install" class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">1. How to Install Minecraft</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-neutral-900 p-8 rounded-3xl">
+                <h3 class="text-2xl mb-4">Choose Edition</h3>
+                <p>Java for PC/mods • Bedrock for mobile/console</p>
+            </div>
+            <div class="bg-neutral-900 p-8 rounded-3xl">
+                <h3 class="text-2xl mb-4">Download</h3>
+                <a href="https://www.minecraft.net/en-us/download" target="_blank" class="text-emerald-400 underline">minecraft.net/download</a>
+            </div>
+            <div class="bg-neutral-900 p-8 rounded-3xl">
+                <h3 class="text-2xl mb-4">Launch</h3>
+                <p>Use the official launcher and log in with Microsoft account.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Static Survival Tips -->
+    <section id="survival" class="bg-neutral-900 py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">2. First Day Survival</h2>
+            <div class="bg-neutral-800 rounded-3xl p-10 text-lg space-y-6">
+                <p><strong>1.</strong> Punch trees → get wood → craft tools</p>
+                <p><strong>2.</strong> Make Crafting Table + Wooden Pickaxe</p>
+                <p><strong>3.</strong> Mine stone → upgrade to Stone tools</p>
+                <p><strong>4.</strong> Find food and build shelter before night!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Sections from Firebase -->
+    <section id="dynamic" class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">3. Live Tips from Database</h2>
+        <div id="dynamic-content" class="space-y-8">
+            <!-- Loaded dynamically from backend -->
+            <p class="text-center text-neutral-400">Loading tips from Firebase...</p>
+        </div>
+    </section>
+
+    <!-- Feedback Form -->
+    <section id="feedback" class="bg-neutral-900 py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">4. Share Your Tip / Feedback</h2>
+            <div class="max-w-2xl mx-auto bg-neutral-800 rounded-3xl p-10">
+                <form id="feedback-form" class="space-y-6">
+                    <div>
+                        <label class="block text-sm mb-2">Your Name (optional)</label>
+                        <input type="text" id="name" placeholder="Steve" 
+                               class="w-full bg-neutral-700 border border-neutral-600 rounded-2xl px-6 py-4 focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-2">Your Message / Tip</label>
+                        <textarea id="message" rows="5" placeholder="Never dig straight down! Always bring torches..." 
+                                  class="w-full bg-neutral-700 border border-neutral-600 rounded-3xl px-6 py-4 focus:outline-none focus:border-emerald-500"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="w-full bg-emerald-500 hover:bg-emerald-600 py-5 rounded-3xl font-bold text-xl transition">
+                        Submit to Firebase
+                    </button>
+                </form>
+                <p id="feedback-status" class="text-center mt-6 text-emerald-400"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 text-center text-neutral-400">
+        <p>Minecraft Starting Guide • Backend powered by Node.js + Firebase</p>
+        <p class="text-xs mt-2">Frontend on GitHub Pages • Dynamic content from Firestore</p>
+    </footer>
+
+    <script>
+        const BACKEND_URL = 'https://YOUR-RENDER-URL.onrender.com'; // ← CHANGE THIS TO YOUR ACTUAL RENDER BACKEND URL
+
+        // Load dynamic sections from backend/Firebase
+        async function loadDynamicSections() {
+            const container = document.getElementById('dynamic-content');
+            container.innerHTML = '<p class="text-center text-neutral-400">Loading live tips from Firebase...</p>';
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/sections`);
+                if (!res.ok) throw new Error('Failed to fetch');
+                
+                const sections = await res.json();
+
+                if (sections.length === 0) {
+                    container.innerHTML = '<p class="text-center text-amber-400">No tips yet. Add some in Firebase Firestore → collection "guide-sections"</p>';
+                    return;
+                }
+
+                let html = '';
+                sections.forEach(sec => {
+                    html += `
+                        <div class="bg-neutral-800 rounded-3xl p-8">
+                            <h3 class="text-emerald-400 text-2xl mb-3">${sec.title || 'Tip'}</h3>
+                            <p class="text-lg">${sec.content || sec.text || 'No content yet'}</p>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = `<p class="text-red-400 text-center">Could not connect to backend.<br>Make sure your Render service is running.</p>`;
+            }
+        }
+
+        // Handle feedback form
+        document.getElementById('feedback-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const statusEl = document.getElementById('feedback-status');
+
+            if (!message) {
+                statusEl.textContent = 'Please write a message!';
+                statusEl.className = 'text-red-400';
+                return;
+            }
+
+            statusEl.textContent = 'Sending to Firebase...';
+            statusEl.className = 'text-emerald-400';
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/feedback`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name || 'Anonymous', message })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    statusEl.textContent = '✅ Thank you! Your tip is saved in Firebase.';
+                    document.getElementById('feedback-form').reset();
+                    // Optional: reload dynamic tips
+                    setTimeout(loadDynamicSections, 1500);
+                } else {
+                    statusEl.textContent = data.error || 'Failed to send.';
+                    statusEl.className = 'text-red-400';
+                }
+            } catch (err) {
+                statusEl.textContent = 'Cannot reach backend. Is Render running?';
+                statusEl.className = 'text-red-400';
+            }
+        });
+
+        // Load dynamic content when page loads
+        window.onload = loadDynamicSections;
+    </script>
+</body>
+</html>
