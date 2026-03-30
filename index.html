@@ -24,11 +24,10 @@
             <div class="hidden md:flex gap-8 text-lg">
                 <a href="#install" class="hover:text-emerald-400 transition-colors">Install</a>
                 <a href="#survival" class="hover:text-emerald-400 transition-colors">First Day</a>
-                <a href="#dynamic" class="hover:text-emerald-400 transition-colors">Dynamic Tips</a>
+                <a href="#dynamic" class="hover:text-emerald-400 transition-colors">Live Tips</a>
                 <a href="#feedback" class="hover:text-emerald-400 transition-colors">Feedback</a>
             </div>
-            <a href="https://www.minecraft.net" target="_blank" 
-               class="bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+            <a href="https://www.minecraft.net" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
                 <i class="fas fa-download"></i> Download
             </a>
         </div>
@@ -39,59 +38,58 @@
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h1 class="text-6xl md:text-7xl font-black leading-none mb-6">WELCOME TO THE BLOCKY WORLD!</h1>
-                <p class="text-2xl text-emerald-300 mb-8">Your complete beginner’s guide — now with live tips from Firebase!</p>
+                <p class="text-2xl text-emerald-300 mb-8">Your complete beginner’s guide with live tips from Firebase</p>
             </div>
             <div class="relative">
-                <img src="https://picsum.photos/id/1015/800/600" alt="Minecraft World" class="rounded-3xl shadow-2xl border-8 border-emerald-500">
+                <img src="https://picsum.photos/id/1015/800/600" alt="Minecraft" class="rounded-3xl shadow-2xl border-8 border-emerald-500">
             </div>
         </div>
     </section>
 
-    <!-- Install Section (static) -->
+    <!-- Install -->
     <section id="install" class="max-w-6xl mx-auto px-6 py-20">
         <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">1. How to Install Minecraft</h2>
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-neutral-900 p-8 rounded-3xl">
                 <h3 class="text-2xl mb-4">Choose Edition</h3>
-                <p>Java for PC/mods • Bedrock for mobile/console</p>
+                <p>Java Edition for PC &amp; mods<br>Bedrock for Mobile &amp; Console</p>
             </div>
             <div class="bg-neutral-900 p-8 rounded-3xl">
                 <h3 class="text-2xl mb-4">Download</h3>
-                <a href="https://www.minecraft.net/en-us/download" target="_blank" class="text-emerald-400 underline">minecraft.net/download</a>
+                <a href="https://www.minecraft.net/en-us/download" target="_blank" class="text-emerald-400 underline">Go to Official Site</a>
             </div>
             <div class="bg-neutral-900 p-8 rounded-3xl">
                 <h3 class="text-2xl mb-4">Launch</h3>
-                <p>Use the official launcher and log in with Microsoft account.</p>
+                <p>Install launcher → Log in with Microsoft account → Play!</p>
             </div>
         </div>
     </section>
 
-    <!-- Static Survival Tips -->
+    <!-- First Day Survival -->
     <section id="survival" class="bg-neutral-900 py-20">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12">2. First Day Survival</h2>
+            <h2 class="text-4xl font-bold text-center mb-12">2. First Day Survival Tips</h2>
             <div class="bg-neutral-800 rounded-3xl p-10 text-lg space-y-6">
-                <p><strong>1.</strong> Punch trees → get wood → craft tools</p>
-                <p><strong>2.</strong> Make Crafting Table + Wooden Pickaxe</p>
-                <p><strong>3.</strong> Mine stone → upgrade to Stone tools</p>
-                <p><strong>4.</strong> Find food and build shelter before night!</p>
+                <p><strong>1.</strong> Punch trees to get wood and craft basic tools.</p>
+                <p><strong>2.</strong> Make a Crafting Table and Wooden Pickaxe.</p>
+                <p><strong>3.</strong> Mine stone and upgrade to Stone tools.</p>
+                <p><strong>4.</strong> Build a small shelter before night falls!</p>
             </div>
         </div>
     </section>
 
-    <!-- Dynamic Sections from Firebase -->
+    <!-- Dynamic Live Tips from Firebase -->
     <section id="dynamic" class="max-w-6xl mx-auto px-6 py-20">
         <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">3. Live Tips from Database</h2>
         <div id="dynamic-content" class="space-y-8">
-            <!-- Loaded dynamically from backend -->
             <p class="text-center text-neutral-400">Loading tips from Firebase...</p>
         </div>
     </section>
 
-    <!-- Feedback Form -->
+    <!-- Feedback -->
     <section id="feedback" class="bg-neutral-900 py-20">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12">4. Share Your Tip / Feedback</h2>
+            <h2 class="text-4xl font-bold text-center mb-12">4. Share Your Own Tip</h2>
             <div class="max-w-2xl mx-auto bg-neutral-800 rounded-3xl p-10">
                 <form id="feedback-form" class="space-y-6">
                     <div>
@@ -100,13 +98,13 @@
                                class="w-full bg-neutral-700 border border-neutral-600 rounded-2xl px-6 py-4 focus:outline-none focus:border-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-sm mb-2">Your Message / Tip</label>
+                        <label class="block text-sm mb-2">Your Tip or Feedback</label>
                         <textarea id="message" rows="5" placeholder="Never dig straight down! Always bring torches..." 
                                   class="w-full bg-neutral-700 border border-neutral-600 rounded-3xl px-6 py-4 focus:outline-none focus:border-emerald-500"></textarea>
                     </div>
-                    <button type="submit"
+                    <button type="submit" 
                             class="w-full bg-emerald-500 hover:bg-emerald-600 py-5 rounded-3xl font-bold text-xl transition">
-                        Submit to Firebase
+                        Submit Tip
                     </button>
                 </form>
                 <p id="feedback-status" class="text-center mt-6 text-emerald-400"></p>
@@ -116,54 +114,90 @@
 
     <!-- Footer -->
     <footer class="bg-black py-10 text-center text-neutral-400">
-        <p>Minecraft Starting Guide • Backend powered by Node.js + Firebase</p>
-        <p class="text-xs mt-2">Frontend on GitHub Pages • Dynamic content from Firestore</p>
+        <p>Minecraft Starting Guide • Powered by Node.js + Firebase</p>
+        <p class="text-xs mt-2">Frontend on GitHub Pages</p>
     </footer>
+
     <script>
-    const BACKEND_URL = 'https://YOUR-ACTUAL-RENDER-URL.onrender.com'; // ← Make sure this is correct (no / at the end)
+        // ←←← CHANGE THIS LINE WITH YOUR REAL RENDER URL
+        const BACKEND_URL = 'https://YOUR-RENDER-URL.onrender.com';
 
-    async function loadDynamicSections() {
-        const container = document.getElementById('dynamic-content');
-        container.innerHTML = '<p class="text-center text-neutral-400">Loading tips from Firebase...</p>';
+        async function loadDynamicSections() {
+            const container = document.getElementById('dynamic-content');
+            container.innerHTML = '<p class="text-center text-neutral-400">Loading tips from Firebase...</p>';
 
-        try {
-            const res = await fetch(`${BACKEND_URL}/api/sections`);
-            
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/sections`);
+                
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+                const sections = await res.json();
+
+                if (!sections || sections.length === 0) {
+                    container.innerHTML = '<p class="text-center text-amber-400">No tips found yet. Add data in Firebase.</p>';
+                    return;
+                }
+
+                let html = '';
+                sections.forEach(sec => {
+                    html += `
+                        <div class="bg-neutral-800 rounded-3xl p-8 border border-emerald-500/30">
+                            <h3 class="text-emerald-400 text-2xl mb-4 font-bold">${sec.title || 'Minecraft Tip'}</h3>
+                            <p class="text-lg leading-relaxed">${sec.content || sec.text || 'No content'}</p>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = `
+                    <p class="text-red-400 text-center">
+                        Could not connect to backend.<br>
+                        Please check your BACKEND_URL and make sure Render is running.
+                    </p>`;
             }
-            
-            const sections = await res.json();
+        }
 
-            if (!sections || sections.length === 0) {
-                container.innerHTML = '<p class="text-center text-amber-400">No tips found in database yet.</p>';
+        // Feedback Form
+        document.getElementById('feedback-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const statusEl = document.getElementById('feedback-status');
+
+            if (!message) {
+                statusEl.textContent = 'Please write a message!';
+                statusEl.className = 'text-red-400';
                 return;
             }
 
-            let html = '';
-            sections.forEach(sec => {
-                html += `
-                    <div class="bg-neutral-800 rounded-3xl p-8 border border-emerald-500/30">
-                        <h3 class="text-emerald-400 text-2xl mb-4 font-bold">${sec.title || 'Minecraft Tip'}</h3>
-                        <p class="text-lg leading-relaxed">${sec.content || sec.text || 'No content available'}</p>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
+            statusEl.textContent = 'Sending...';
+            statusEl.className = 'text-emerald-400';
 
-        } catch (err) {
-            console.error("Fetch error:", err);
-            container.innerHTML = `
-                <p class="text-red-400 text-center">
-                    Could not load tips.<br>
-                    <span class="text-sm">Error: ${err.message}</span><br><br>
-                    Make sure your BACKEND_URL is correct and Render is Live.
-                </p>`;
-        }
-    }
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/feedback`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name || 'Anonymous', message })
+                });
 
-    // Load tips when page opens
-    window.onload = loadDynamicSections;
-</script>
+                if (res.ok) {
+                    statusEl.textContent = '✅ Thank you! Your tip has been saved.';
+                    document.getElementById('feedback-form').reset();
+                    setTimeout(loadDynamicSections, 1000);
+                } else {
+                    statusEl.textContent = 'Failed to send. Try again.';
+                    statusEl.className = 'text-red-400';
+                }
+            } catch (err) {
+                statusEl.textContent = 'Cannot reach backend. Is Render running?';
+                statusEl.className = 'text-red-400';
+            }
+        });
+
+        // Load tips when page opens
+        window.onload = loadDynamicSections;
+    </script>
 </body>
 </html>
