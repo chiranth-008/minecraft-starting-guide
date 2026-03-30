@@ -132,9 +132,24 @@
         <p>Made with ❤️ for new Minecrafters • Hosted on GitHub Pages</p>
         <p class="text-xs mt-2">Customise this site using the pictures you provided</p>
     </footer>
+<script>
+  const BACKEND_URL = 'https://your-backend.onrender.com'; // ← CHANGE TO YOUR RENDER URL
 
-    <script>
-        // Tailwind script already loaded
-    </script>
+  async function loadDynamicSections() {
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/sections`);
+      const sections = await res.json();
+      
+      // Example: populate a new "Dynamic Tips" section
+      console.log('Loaded from Firebase:', sections);
+      // You can now render them dynamically — let me know if you want the full updated HTML
+    } catch(e) {
+      console.error('Backend not reachable yet');
+    }
+  }
+
+  // Load on page start
+  window.onload = loadDynamicSections;
+</script>    
 </body>
 </html>
