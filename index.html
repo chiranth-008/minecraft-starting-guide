@@ -119,85 +119,53 @@
         <p>Minecraft Starting Guide • Backend powered by Node.js + Firebase</p>
         <p class="text-xs mt-2">Frontend on GitHub Pages • Dynamic content from Firestore</p>
     </footer>
+      <script>
+    const BACKEND_URL = 'https://YOUR-ACTUAL-RENDER-URL.onrender.com'; // ← Make sure this is correct (no / at the end)
 
-    <script>
-        const BACKEND_URL = 'https://YOUR-RENDER-URL.onrender.com'; // ← CHANGE THIS TO YOUR ACTUAL RENDER BACKEND URL
+    async function loadDynamicSections() {
+        const container = document.getElementById('dynamic-content');
+        container.innerHTML = '<p class="text-center text-neutral-400">Loading tips from Firebase...</p>';
 
-        // Load dynamic sections from backend/Firebase
-        async function loadDynamicSections() {
-            const container = document.getElementById('dynamic-content');
-            container.innerHTML = '<p class="text-center text-neutral-400">Loading live tips from Firebase...</p>';
-
-            try {
-                const res = await fetch(`${BACKEND_URL}/api/sections`);
-                if (!res.ok) throw new Error('Failed to fetch');
-                
-                const sections = await res.json();
-
-                if (sections.length === 0) {
-                    container.innerHTML = '<p class="text-center text-amber-400">No tips yet. Add some in Firebase Firestore → collection "guide-sections"</p>';
-                    return;
-                }
-
-                let html = '';
-                sections.forEach(sec => {
-                    html += `
-                        <div class="bg-neutral-800 rounded-3xl p-8">
-                            <h3 class="text-emerald-400 text-2xl mb-3">${sec.title || 'Tip'}</h3>
-                            <p class="text-lg">${sec.content || sec.text || 'No content yet'}</p>
-                        </div>
-                    `;
-                });
-                container.innerHTML = html;
-            } catch (err) {
-                console.error(err);
-                container.innerHTML = `<p class="text-red-400 text-center">Could not connect to backend.<br>Make sure your Render service is running.</p>`;
-            }
-        }
-
-        // Handle feedback form
-        document.getElementById('feedback-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        try {
+            const res = await fetch(`${BACKEND_URL}/api/sections`);
             
-            const name = document.getElementById('name').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const statusEl = document.getElementById('feedback-status');
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            
+            const sections = await res.json();
 
-            if (!message) {
-                statusEl.textContent = 'Please write a message!';
-                statusEl.className = 'text-red-400';
+            if (!sections || sections.length === 0) {
+                container.innerHTML = '<p class="text-center text-amber-400">No tips found in database yet.</p>';
                 return;
             }
 
-            statusEl.textContent = 'Sending to Firebase...';
-            statusEl.className = 'text-emerald-400';
+            let html = '';
+            sections.forEach(sec => {
+                html += `
+                    <div class="bg-neutral-800 rounded-3xl p-8 border border-emerald-500/30">
+                        <h3 class="text-emerald-400 text-2xl mb-4 font-bold">${sec.title || 'Minecraft Tip'}</h3>
+                        <p class="text-lg leading-relaxed">${sec.content || sec.text || 'No content available'}</p>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
 
-            try {
-                const res = await fetch(`${BACKEND_URL}/api/feedback`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: name || 'Anonymous', message })
-                });
+        } catch (err) {
+            console.error("Fetch error:", err);
+            container.innerHTML = `
+                <p class="text-red-400 text-center">
+                    Could not load tips.<br>
+                    <span class="text-sm">Error: ${err.message}</span><br><br>
+                    Make sure your BACKEND_URL is correct and Render is Live.
+                </p>`;
+        }
+    }
 
-                const data = await res.json();
-
-                if (res.ok) {
-                    statusEl.textContent = '✅ Thank you! Your tip is saved in Firebase.';
-                    document.getElementById('feedback-form').reset();
-                    // Optional: reload dynamic tips
-                    setTimeout(loadDynamicSections, 1500);
-                } else {
-                    statusEl.textContent = data.error || 'Failed to send.';
-                    statusEl.className = 'text-red-400';
-                }
-            } catch (err) {
-                statusEl.textContent = 'Cannot reach backend. Is Render running?';
-                statusEl.className = 'text-red-400';
-            }
-        });
-
+    // Load tips when page opens
+    window.onload = loadDynamicSections;
+</script>
         // Load dynamic content when page loads
         window.onload = loadDynamicSections;
-    </script>
 </body>
 </html>
