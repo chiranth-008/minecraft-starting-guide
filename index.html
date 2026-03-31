@@ -21,55 +21,137 @@
                 <h1 class="text-3xl font-bold tracking-widest text-emerald-400 minecraft-font">MINECRAFT</h1>
                 <span class="text-xl">Starting Guide</span>
             </div>
+            <div class="hidden md:flex gap-8 text-lg">
+                <a href="#install" class="hover:text-emerald-400">Install</a>
+                <a href="#survival" class="hover:text-emerald-400">First Day</a>
+                <a href="#tips" class="hover:text-emerald-400">Live Tips</a>
+                <a href="#comments" class="hover:text-emerald-400">Community</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-neutral-950 via-emerald-950 to-neutral-950 py-20 text-center">
-        <h1 class="text-6xl font-black mb-4">Welcome to Minecraft!</h1>
-        <p class="text-2xl text-emerald-300">Share your tips with other players</p>
-    </section>
-
-    <!-- Live Comments / Tips Section -->
-    <section class="max-w-6xl mx-auto px-6 py-16">
-        <h2 class="text-4xl font-bold text-center mb-10 text-emerald-400">Community Tips & Comments</h2>
-        <div id="comments-container" class="space-y-6 mb-12">
-            <!-- Comments will load here automatically -->
-        </div>
-
-        <!-- Add New Comment Form -->
-        <div class="bg-neutral-900 rounded-3xl p-10 max-w-2xl mx-auto">
-            <h3 class="text-2xl font-bold mb-6">Write Your Tip / Comment</h3>
-            <form id="comment-form" class="space-y-6">
-                <input type="text" id="name" placeholder="Your Name (optional)" 
-                       class="w-full bg-neutral-800 border border-neutral-600 rounded-2xl px-6 py-4 text-lg">
-                
-                <textarea id="message" rows="4" placeholder="Example: Never dig straight down! Always carry torches..." 
-                          class="w-full bg-neutral-800 border border-neutral-600 rounded-3xl px-6 py-4 text-lg"></textarea>
-                
-                <button type="submit" 
-                        class="w-full bg-emerald-500 hover:bg-emerald-600 py-5 rounded-3xl font-bold text-xl">
-                    Submit Comment
-                </button>
-            </form>
-            <p id="status" class="text-center mt-6 text-emerald-400"></p>
+    <section class="bg-gradient-to-br from-neutral-950 via-emerald-950 to-neutral-950 py-24">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-7xl font-black leading-none mb-6">WELCOME TO THE BLOCKY WORLD!</h1>
+            <p class="text-2xl text-emerald-300">Complete Beginner Guide + Community Comments</p>
         </div>
     </section>
+
+    <!-- 1. Install -->
+    <section id="install" class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">1. How to Install Minecraft</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-neutral-900 p-8 rounded-3xl">
+                <h3 class="text-2xl mb-4">Choose Edition</h3>
+                <p>Java Edition (PC + Mods)<br>Bedrock Edition (Mobile + Console)</p>
+            </div>
+            <div class="bg-neutral-900 p-8 rounded-3xl">
+                <h3 class="text-2xl mb-4">Download</h3>
+                <a href="https://www.minecraft.net/en-us/download" target="_blank" class="text-emerald-400 underline">minecraft.net/download</a>
+            </div>
+            <div class="bg-neutral-900 p-8 rounded-3xl">
+                <h3 class="text-2xl mb-4">Launch</h3>
+                <p>Install launcher → Log in with Microsoft → Hit Play!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. First Day Survival -->
+    <section id="survival" class="bg-neutral-900 py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">2. First Day Survival</h2>
+            <div class="bg-neutral-800 rounded-3xl p-10 text-lg space-y-6">
+                <p><strong>1.</strong> Punch trees → get wood → craft tools</p>
+                <p><strong>2.</strong> Make Crafting Table + Wooden Pickaxe</p>
+                <p><strong>3.</strong> Mine stone → upgrade to Stone tools</p>
+                <p><strong>4.</strong> Build shelter before night!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Live Tips from Firebase -->
+    <section id="tips" class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">3. Live Tips from Database</h2>
+        <div id="dynamic-content" class="space-y-8">
+            <p class="text-center text-neutral-400">Loading tips...</p>
+        </div>
+    </section>
+
+    <!-- 4. Community Comments -->
+    <section id="comments" class="bg-neutral-900 py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-emerald-400">4. Community Comments & Tips</h2>
+            
+            <!-- Display Comments -->
+            <div id="comments-container" class="space-y-6 mb-12">
+                <p class="text-center text-neutral-400">Loading community comments...</p>
+            </div>
+
+            <!-- Add Comment Form -->
+            <div class="max-w-2xl mx-auto bg-neutral-800 rounded-3xl p-10">
+                <h3 class="text-2xl font-bold mb-6">Share Your Tip</h3>
+                <form id="comment-form" class="space-y-6">
+                    <input type="text" id="name" placeholder="Your Name (optional)" 
+                           class="w-full bg-neutral-700 border border-neutral-600 rounded-2xl px-6 py-4">
+                    
+                    <textarea id="message" rows="4" placeholder="Write your Minecraft tip or comment here..." 
+                              class="w-full bg-neutral-700 border border-neutral-600 rounded-3xl px-6 py-4"></textarea>
+                    
+                    <button type="submit" 
+                            class="w-full bg-emerald-500 hover:bg-emerald-600 py-5 rounded-3xl font-bold text-xl transition">
+                        Submit Comment
+                    </button>
+                </form>
+                <p id="status" class="text-center mt-6 text-emerald-400"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 text-center text-neutral-400">
+        <p>Minecraft Starting Guide • Backend: Node.js + Firebase</p>
+    </footer>
 
     <script>
-        const BACKEND_URL = 'https://YOUR-RENDER-URL.onrender.com';   // ← CHANGE THIS
+        const BACKEND_URL = 'https://YOUR-RENDER-URL.onrender.com';   // ← CHANGE THIS TO YOUR REAL RENDER URL
 
-        // Load all comments
+        // Load Live Tips from Firebase
+        async function loadDynamicTips() {
+            const container = document.getElementById('dynamic-content');
+            try {
+                const res = await fetch(`${BACKEND_URL}/api/sections`);
+                const tips = await res.json();
+
+                if (tips.length === 0) {
+                    container.innerHTML = '<p class="text-amber-400 text-center">No tips added yet in Firebase.</p>';
+                    return;
+                }
+
+                let html = '';
+                tips.forEach(t => {
+                    html += `
+                        <div class="bg-neutral-800 rounded-3xl p-8">
+                            <h3 class="text-emerald-400 text-2xl mb-3">${t.title}</h3>
+                            <p class="text-lg">${t.content}</p>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch(e) {
+                container.innerHTML = '<p class="text-red-400 text-center">Could not load tips from database.</p>';
+            }
+        }
+
+        // Load Community Comments
         async function loadComments() {
             const container = document.getElementById('comments-container');
-            container.innerHTML = '<p class="text-center text-neutral-400">Loading comments...</p>';
-
             try {
                 const res = await fetch(`${BACKEND_URL}/api/comments`);
                 const comments = await res.json();
 
                 if (comments.length === 0) {
-                    container.innerHTML = '<p class="text-center text-amber-400">No comments yet. Be the first!</p>';
+                    container.innerHTML = '<p class="text-amber-400 text-center">No comments yet. Be the first to share!</p>';
                     return;
                 }
 
@@ -77,21 +159,21 @@
                 comments.forEach(c => {
                     html += `
                         <div class="bg-neutral-800 rounded-3xl p-8">
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-start">
                                 <strong class="text-emerald-400">${c.name || 'Anonymous'}</strong>
                                 <small class="text-neutral-500">${new Date(c.timestamp).toLocaleString()}</small>
                             </div>
-                            <p class="mt-3 text-lg">${c.message}</p>
+                            <p class="mt-4 text-lg">${c.message}</p>
                         </div>
                     `;
                 });
                 container.innerHTML = html;
             } catch(e) {
-                container.innerHTML = '<p class="text-red-400 text-center">Could not load comments</p>';
+                container.innerHTML = '<p class="text-red-400 text-center">Could not load comments.</p>';
             }
         }
 
-        // Submit new comment
+        // Submit New Comment
         document.getElementById('comment-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
@@ -104,7 +186,7 @@
                 return;
             }
 
-            status.textContent = "Saving to database...";
+            status.textContent = "Saving to Firebase...";
 
             try {
                 const res = await fetch(`${BACKEND_URL}/api/comments`, {
@@ -116,17 +198,20 @@
                 if (res.ok) {
                     status.textContent = "✅ Comment saved successfully!";
                     document.getElementById('comment-form').reset();
-                    loadComments();        // Refresh the list
+                    loadComments();   // Refresh comments
                 } else {
-                    status.textContent = "Failed to save. Try again.";
+                    status.textContent = "Failed to save comment.";
                 }
             } catch(e) {
                 status.textContent = "Cannot connect to server.";
             }
         });
 
-        // Load comments when page opens
-        window.onload = loadComments;
+        // Load both sections when page opens
+        window.onload = () => {
+            loadDynamicTips();
+            loadComments();
+        };
     </script>
 </body>
 </html>
